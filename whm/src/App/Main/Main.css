@@ -1,22 +1,10 @@
-/* @keyframes breathe {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-} */
-
 .bubble {
   position: relative;
 }
 
 .circle {
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   border: 5px solid orange;
 }
@@ -29,11 +17,6 @@
   font-size: 48px;
   color: orange;
 }
-
-/* 
-.breathe {
-  animation: breathe 1s 10;
-} */
 
 .controls {
   margin: 50px;

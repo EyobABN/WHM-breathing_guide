@@ -7,18 +7,19 @@ import { motion, useAnimation } from 'framer-motion';
 const Main = ({ mainState }) => {
   const controls = useAnimation();
   const [isBreathing, setIsBreathing] = useState(false);
-  const breathLength = 4;
+  const breathLength = mainState.pace;
+
 
   const handlePlayClick = () => {
     console.log('handlePlayClick called');
     setIsBreathing(!isBreathing);
     if (!isBreathing) {
       controls.start({
-        scale: [1, 1.3, 1],
+        scale: [1, 1.2, 1],
         transition: {
           duration: breathLength,
           ease: 'easeInOut',
-          repeat: Number(mainState.breaths) - 1,
+          repeat: mainState.breaths - 1,
         },
       });
     } else {
@@ -31,7 +32,7 @@ const Main = ({ mainState }) => {
       <div style={{'margin': '50px'}}>{JSON.stringify(mainState)}</div>
       <motion.div animate={controls} className='bubble'>
         <div className='circle'></div>
-        { isBreathing ? <Counter maxCount={Number(mainState.breaths)} delay={breathLength * 1000}/> : '' }
+        { isBreathing ? <Counter maxCount={mainState.breaths} delay={breathLength * 1000}/> : '' }
       </motion.div>
       <div className='controls'>
         <button
