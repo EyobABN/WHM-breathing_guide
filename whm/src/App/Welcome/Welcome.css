@@ -1,0 +1,22 @@
+.form-elements {
+  width: 480px;
+  min-height: 100px;
+  height: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: ghostwhite;
+  border: 1px solid rgb(235, 235, 235);
+  border-radius: 5px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.form-element {
+  margin: 5px;
+}

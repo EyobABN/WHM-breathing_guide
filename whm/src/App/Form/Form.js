@@ -1,44 +1,16 @@
 import React, { useState } from "react";
+import PaceSelect from "./PaceSelect/PaceSelect";
+import BreathSelect from "./BreathSelect/BreathSelect";
 import './Form.css'
 
-
-const PaceSelect = ({ paces, onChange }) => {
-  return (
-    <label className="form-element">
-      BREATHING PACE
-      <select defaultValue={'Normal'} onChange={onChange}>
-        {paces.map((pace) => (
-          <option key={pace} value={pace}>
-            {pace}
-          </option>
-        ))}
-      </select>
-    </label>
-  );
-};
-
-const BreathSelect = ({ numbers, onChange }) => {
-  return (
-    <label className="form-element">
-      BREATHS BEFORE RETENTION
-      <select defaultValue={30} onChange={onChange}>
-        {numbers.map((number) => (
-          <option key={number} value={number}>
-            {number}
-          </option>
-        ))}
-      </select>
-    </label>
-  );
-};
-
-const Form = ({ setMainState, setFormSubmitted }) => {
-  const [ formState, setFormState ] = useState({ 'pace': 'Normal', 'breaths': 30 });
+const Form = ({ setShowForm, setShowMain, setMainState }) => {
+  const [ formState, setFormState ] = useState({ 'pace': 3, 'breaths': 30 });
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setMainState(formState);
-    setFormSubmitted(true);
+    setShowMain(true);
+    setShowForm(false);
   };
 
   const handlePaceChange = (event) => {

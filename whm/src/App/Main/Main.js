@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import './Main.css';
-import Counter from './Counter/Counter';
 import { motion, useAnimation } from 'framer-motion';
-// import StarRating from './StarRating/StarRating';
+import Counter from './Counter/Counter';
+import { FaPlay, FaArrowLeft, FaTimes, FaFastForward } from 'react-icons/fa';
 
-const Main = ({ mainState }) => {
+import './Main.css';
+
+const Main = ({ setShowForm, setShowMain, mainState }) => {
   const controls = useAnimation();
   const [isBreathing, setIsBreathing] = useState(false);
   const breathLength = mainState.pace;
 
-
-  const handlePlayClick = () => {
-    console.log('handlePlayClick called');
+  const handleClick = () => {
     setIsBreathing(!isBreathing);
     if (!isBreathing) {
       controls.start({
@@ -24,26 +23,26 @@ const Main = ({ mainState }) => {
       });
     } else {
       controls.stop();
+      controls.start({scale: 1, transition: {duration: 1, ease: 'easeInOut'}});
     }
   };
 
   return (
     <main className='main'>
-      <div style={{'margin': '50px'}}>{JSON.stringify(mainState)}</div>
-      <motion.div animate={controls} className='bubble'>
-        <div className='circle'></div>
-        { isBreathing ? <Counter maxCount={mainState.breaths} delay={breathLength * 1000}/> : '' }
-      </motion.div>
-      <div className='controls'>
-        <button
-          type='button'
-          title={isBreathing ? 'Stop session' : 'Start session'}
-          className='button'
-          onClick={handlePlayClick}>
-          {isBreathing ? 'STOP' : 'START'}
-        </button>
-        {/* <StarRating className='stars'/> */}
+      <FaArrowLeft className='back-button' onClick={() => { setShowForm(true); setShowMain(false);}} />
+      <div className='state'>{`Round N | ${JSON.stringify(mainState)}`}</div>
+      <div className='bubble'>
+        <motion.div className='circle' animate={controls}></motion.div>
+        { isBreathing ?
+          <Counter maxCount={mainState.breaths} delay={breathLength * 1000}/> :
+          <FaPlay type='button' title='Start session' onClick={handleClick} className='play-button'/> }
       </div>
+      <div className='controls'>
+        { isBreathing ?
+          <FaFastForward type='button' title='Go into retention' className='ff-button' onClick={handleClick} /> :
+          '' }
+      </div>
+      <FaTimes type='button' title='Stop session' className='finish-button'>Finish</FaTimes>
     </main>
   );
 };
