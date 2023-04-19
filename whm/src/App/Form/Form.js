@@ -4,7 +4,7 @@ import BreathSelect from "./BreathSelect/BreathSelect";
 import './Form.css'
 
 const Form = ({ setShowForm, setShowMain, setMainState }) => {
-  const [ formState, setFormState ] = useState({ 'pace': 3, 'breaths': 30 });
+  const [ formState, setFormState ] = useState({ 'pace': 3, 'breaths': 30, 'round': 0, retentionTimes: [] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,7 +45,7 @@ const Form = ({ setShowForm, setShowMain, setMainState }) => {
           onChange={handlePaceChange}
         />
         <BreathSelect
-          numbers={[10, 20, 30, 40, 50, 60]}
+          numbers={[5, 20, 30, 40, 50, 60]}
           onChange={handleNumberChange}
         />
       </div>
