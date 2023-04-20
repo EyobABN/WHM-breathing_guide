@@ -13,10 +13,22 @@
   border-radius: 5px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 
+  padding-top: 15px;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
 
 .form-element {
   margin: 5px;
+  color: rgb(70, 70, 85);
+}
+
+select {
+  padding: 1px 3px;
+  margin-left: 5px;
+  background-color: rgb(235, 235, 255);
+  border-color: rgb(235, 235, 255);
+  border-radius: 3px;
+  height: 30px;
+  color: rgb(75, 75, 85);
 }

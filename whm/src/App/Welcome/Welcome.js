@@ -10,8 +10,8 @@ const Welcome = ({ setShowWelcome, setShowForm}) => {
 
   return (
     <div className="welcome">
-      <h1>WIM HOF METHOD</h1>
-      <p>Breathing Guide</p>
+      <div className="subTitle">Wim Hof Method</div>
+      <div className="title">BREATHING GUIDE</div>
       <button
         className="button"
         onClick={handleClick}

@@ -1,34 +1,22 @@
 .back-button, .finish-button {
   cursor: pointer;
   position: absolute;
+  width: 30px;
+  height: 30px;
   top: 8%;
   color: rgb(225, 225, 255);
 }
 
 .back-button {
   left: 25px;
-  width: 25px;
-  height: 25px;
 }
 
 .finish-button {
   right: 25px;
-  width: 30px;
-  height: 30px;
 }
-
-
-.ff-button {
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-  color: rgb(225, 225, 255);
-}
-
 
 .back-button:hover,
-.finish-button:hover,
-.ff-button:hover {
+.finish-button:hover {
   color: orange;
 }
 
@@ -71,10 +59,21 @@
   position: absolute;
   margin: 50px;
   top: 0;
+  color: lightgray;
+}
+
+.prompt {
+  position: absolute;
+  margin: 50px;
+  top: 100px;
+
+  font-size: 20px;
+  color: lightgray;
+  font-weight: 500;
 }
 
 .controls {
   position: absolute;
   margin: 50px;
-  bottom: 0;
+  bottom: 50px;
 }

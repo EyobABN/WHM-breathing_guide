@@ -3,7 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import BreathCounter from './BreathCounter/BreathCounter';
 import Countup from './Timers/Countup';
 import Countdown from './Timers/Countdown';
-import { FaPlay, FaArrowLeft, FaTimes, FaFastForward, FaCheckCircle } from 'react-icons/fa';
+import { FaPlay, FaArrowLeft, FaTimes } from 'react-icons/fa';
 import './Main.css';
 
 
@@ -12,14 +12,16 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState }) => {
   const [isBreathing, setIsBreathing] = useState(false);
   const [isInRetention, setIsInRetention] = useState(false);
   const [isInRecovery, setIsInRecovery] = useState(false);
+  const [isInTransition, setIsInTransition] = useState(false);
 
   const [retentionSeconds, setRetentionSeconds] = useState(0);
 
   const controls = useAnimation();
   const breathLength = mainState.pace;
+  const recoveryLength = 15;
 
   const handleStart = () => {
-    if (isInRecovery) setIsInRecovery(false);
+    if (isInTransition) setIsInTransition(false);
     if (isStart) setIsStart(false);
     setMainState({...mainState, 'round': mainState.round + 1})
     setIsBreathing(!isBreathing);
@@ -44,9 +46,9 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState }) => {
     controls.stop();
     controls.start({scale: 1, transition: {duration: duration, ease: 'easeInOut'}});
     setIsBreathing(false);
-    setTimeout(() => {
+    // setTimeout(() => {
       setIsInRetention(true);
-    }, duration * 1000);
+    // }, duration * 1000);
   }
 
   const handleRecoveryClick = () => {
@@ -57,27 +59,38 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState }) => {
     setIsInRetention(false);
     setMainState({...mainState, 'retentionTimes': [...mainState.retentionTimes, retentionSeconds]});
     setRetentionSeconds(0);
-    setTimeout(() => {
+    // setTimeout(() => {
       setIsInRecovery(true);
-    }, duration * 1000);
+    // }, duration * 1000);
+  }
+
+  const handleTransition = () => {
+    setIsInRecovery(false);
+    setIsInTransition(true);
   }
 
   return (
     <main className='main'>
       <FaArrowLeft className='back-button' onClick={() => { setShowForm(true); setShowMain(false);}} />
+      <div className='prompt'>
+        { isStart && 'PRESS PLAY TO START' }
+        { isBreathing && `TAKE ${mainState.breaths} DEEP BREATHS` }
+        { isInRetention && 'LET GO AND HOLD' }
+        { isInRecovery && 'TAKE A DEEP BREATH IN AND HOLD'}
+      </div>
       <div className='state'>{`${JSON.stringify(mainState)}`}</div>
       <div className='bubble'>
         <motion.div className='circle' animate={controls}></motion.div>
         { isStart && <FaPlay type='button' className='play-button' title='Start session' onClick={handleStart} /> }
         { isBreathing && <BreathCounter setIsBreathing={setIsBreathing} setIsInRetention={setIsInRetention} maxCount={mainState.breaths} delay={breathLength * 1000}/> }
         { isInRetention && <Countup seconds={retentionSeconds} setSeconds={setRetentionSeconds} /> }
-        { isInRecovery && <Countdown seconds={5} controls={controls} completeRound={handleStart} mainState={mainState} />}
+        { isInRecovery && <Countdown seconds={recoveryLength} controls={controls} completeRound={handleTransition} mainState={mainState} />}
       </div>
       <div className='controls'>
-        { isBreathing && <FaFastForward type='button' title='Go into retention' className='ff-button' onClick={handleRetentionClick} /> }
-        { isInRetention && <FaCheckCircle type='button' title='Go into recovery' className='ff-button' onClick={handleRecoveryClick} /> }
+        { isBreathing && <button type='button' className='button' onClick={handleRetentionClick}>GO INTO RETENTION</button> }
+        { isInRetention && <button type='button' className='button' onClick={handleRecoveryClick}>GO INTO RECOVERY</button> }
       </div>
-      <FaTimes type='button' title='Stop session' className='finish-button'>Finish</FaTimes>
+      <FaTimes type='button' title='Stop session' className='finish-button' />
     </main>
   );
 };
