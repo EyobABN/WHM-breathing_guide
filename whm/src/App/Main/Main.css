@@ -1,23 +1,50 @@
-.back-button, .finish-button {
+.back-button {
   cursor: pointer;
   position: absolute;
+  left: 5%;
+  top: 10%;
+  color: lightslategray;
   width: 30px;
   height: 30px;
-  top: 8%;
-  color: rgb(225, 225, 255);
+  padding: 5px;
+  margin: 0;
 }
 
-.back-button {
-  left: 25px;
+.back-button:hover {
+  color: white;
+  background-color: orange;
+  border-radius: 15px;
 }
 
-.finish-button {
-  right: 25px;
+#finish-button {
+  position: absolute;
+  background-color: transparent;
+  color: lightslategray;
+  right: 5%;
+  top: 10%;
+  padding: 0px;
+  height: 30px;
+  padding: 5px 10px;
 }
 
-.back-button:hover,
-.finish-button:hover {
-  color: orange;
+#finish-button:hover {
+  color: white;
+  background-color: orange;
+}
+
+.state {
+  position: absolute;
+  color: lightslategray;
+  top: 15%;
+}
+
+.prompt {
+  position: absolute;
+  top: 25%;
+
+  font-size: 20px;
+  color: lightslategray;
+  font-weight: 400;
 }
 
 .bubble {
@@ -58,23 +85,6 @@
   text-align: center;
   width: 200px;
   transform: translate(-50%, -50%);
-}
-
-.state {
-  position: absolute;
-  margin: 50px;
-  top: 0;
-  color: lightgray;
-}
-
-.prompt {
-  position: absolute;
-  margin: 50px;
-  top: 100px;
-
-  font-size: 20px;
-  color: lightgray;
-  font-weight: 500;
 }
 
 .controls {

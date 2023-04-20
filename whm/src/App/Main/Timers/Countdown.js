@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Prompt from '../Prompt/Prompt';
 
 const Countdown = ({ seconds, controls, completeRound, mainState }) => {
   const [timeLeft, setTimeLeft] = useState(seconds);
@@ -29,7 +30,7 @@ const Countdown = ({ seconds, controls, completeRound, mainState }) => {
 
   return (
     <div className='timer'>
-      {timeLeft === 0 ? 'LET GO' : `${displayMinutes}:${displaySeconds}`}
+      {timeLeft === 0 ? <Prompt text={'LET GO'} time={mainState.pace * 1000} /> : `${displayMinutes}:${displaySeconds}`}
     </div>
   );
 };

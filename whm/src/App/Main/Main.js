@@ -4,11 +4,11 @@ import Prompt from './Prompt/Prompt';
 import BreathCounter from './BreathCounter/BreathCounter';
 import Countup from './Timers/Countup';
 import Countdown from './Timers/Countdown';
-import { FaPlay, FaArrowLeft, FaTimes } from 'react-icons/fa';
+import { FaPlay, FaArrowLeft } from 'react-icons/fa';
 import './Main.css';
 
 
-const Main = ({ setShowForm, setShowMain, mainState, setMainState }) => {
+const Main = ({ setShowForm, setShowMain, mainState, setMainState, setShowReport }) => {
   const [isStart, setIsStart] = useState(true);
   const [isBreathing, setIsBreathing] = useState(false);
   const [isInRetention, setIsInRetention] = useState(false);
@@ -65,6 +65,11 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState }) => {
     setIsStart(true);
   }
 
+  const handleFinishClick = () => {
+    setShowReport(true);
+    setShowMain(false);
+  }
+
   return (
     <main className='main'>
       <FaArrowLeft className='back-button' onClick={() => { setShowForm(true); setShowMain(false);}} />
@@ -86,7 +91,7 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState }) => {
         { isBreathing && <button type='button' className='button' onClick={handleRetentionClick}>GO INTO RETENTION</button> }
         { isInRetention && <button type='button' className='button' onClick={handleRecoveryClick}>GO INTO RECOVERY</button> }
       </div>
-      <FaTimes type='button' title='Stop session' className='finish-button' />
+      <button type='button' className='button' id='finish-button' onClick={handleFinishClick}>FINISH</button>
     </main>
   );
 };

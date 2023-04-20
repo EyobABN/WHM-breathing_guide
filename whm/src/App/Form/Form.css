@@ -18,7 +18,7 @@
 
 .form-element {
   margin: 5px;
-  color: rgb(70, 70, 85);
+  color: darkslategray;
 }
 
 select {
@@ -28,5 +28,5 @@ select {
   border-color: rgb(235, 235, 255);
   border-radius: 3px;
   height: 30px;
-  color: rgb(75, 75, 85);
+  color: darkslategray;
 }
