@@ -6,7 +6,7 @@ const Countdown = ({ seconds, controls, completeRound, mainState }) => {
   useEffect(() => {
     if (!timeLeft) {
 
-      const duration = mainState.pace / 2;
+      const duration = mainState.pace / 2 + 4;
   
       controls.stop();
       controls.start({scale: 1, transition: {duration: duration, ease: 'easeInOut'}});
@@ -29,7 +29,7 @@ const Countdown = ({ seconds, controls, completeRound, mainState }) => {
 
   return (
     <div className='timer'>
-      <p>{displayMinutes}:{displaySeconds}</p>
+      {timeLeft === 0 ? 'LET GO' : `${displayMinutes}:${displaySeconds}`}
     </div>
   );
 };

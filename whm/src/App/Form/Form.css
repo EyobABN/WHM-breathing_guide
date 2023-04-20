@@ -1,6 +1,5 @@
 .form-elements {
-  width: 480px;
-  min-height: 100px;
+  width: auto;
   height: auto;
 
   display: flex;
@@ -13,8 +12,7 @@
   border-radius: 5px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 15px 30px;
   margin-bottom: 15px;
 }
 

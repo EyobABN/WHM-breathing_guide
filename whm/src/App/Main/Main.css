@@ -46,12 +46,17 @@
 }
 
 .counter {
+  text-align: center;
   font-size: 72px;
   transform: translate(-50%, -50%);
 }
 
 .timer {
+  margin: 0px;
+  padding: 0px;
   font-size: 48px;
+  text-align: center;
+  width: 200px;
   transform: translate(-50%, -50%);
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import Prompt from './Prompt/Prompt';
 import BreathCounter from './BreathCounter/BreathCounter';
 import Countup from './Timers/Countup';
 import Countdown from './Timers/Countdown';
@@ -12,16 +13,15 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState }) => {
   const [isBreathing, setIsBreathing] = useState(false);
   const [isInRetention, setIsInRetention] = useState(false);
   const [isInRecovery, setIsInRecovery] = useState(false);
-  const [isInTransition, setIsInTransition] = useState(false);
 
   const [retentionSeconds, setRetentionSeconds] = useState(0);
 
   const controls = useAnimation();
   const breathLength = mainState.pace;
   const recoveryLength = 15;
+  const promptDuration = 10000;
 
   const handleStart = () => {
-    if (isInTransition) setIsInTransition(false);
     if (isStart) setIsStart(false);
     setMainState({...mainState, 'round': mainState.round + 1})
     setIsBreathing(!isBreathing);
@@ -44,39 +44,35 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState }) => {
     const duration = mainState.pace / 2;
 
     controls.stop();
-    controls.start({scale: 1, transition: {duration: duration, ease: 'easeInOut'}});
     setIsBreathing(false);
-    // setTimeout(() => {
-      setIsInRetention(true);
-    // }, duration * 1000);
+    setIsInRetention(true);
+    controls.start({scale: 1, transition: {duration: duration, ease: 'easeInOut'}});
   }
 
   const handleRecoveryClick = () => {
     const duration = mainState.pace / 2;
 
     controls.stop();
-    controls.start({scale: 1.3, transition: {duration: duration, ease: 'easeInOut'}});
     setIsInRetention(false);
     setMainState({...mainState, 'retentionTimes': [...mainState.retentionTimes, retentionSeconds]});
     setRetentionSeconds(0);
-    // setTimeout(() => {
-      setIsInRecovery(true);
-    // }, duration * 1000);
+    setIsInRecovery(true);
+    controls.start({scale: [1, 1.3], transition: {duration: duration, ease: 'easeInOut'}});
   }
 
   const handleTransition = () => {
     setIsInRecovery(false);
-    setIsInTransition(true);
+    setIsStart(true);
   }
 
   return (
     <main className='main'>
       <FaArrowLeft className='back-button' onClick={() => { setShowForm(true); setShowMain(false);}} />
       <div className='prompt'>
-        { isStart && 'PRESS PLAY TO START' }
-        { isBreathing && `TAKE ${mainState.breaths} DEEP BREATHS` }
-        { isInRetention && 'LET GO AND HOLD' }
-        { isInRecovery && 'TAKE A DEEP BREATH IN AND HOLD'}
+        { isStart && <Prompt text={'PRESS PLAY TO START'} /> }
+        { isBreathing && <Prompt text={`TAKE ${mainState.breaths} DEEP BREATHS`} time={promptDuration} /> }
+        { isInRetention && <Prompt text={'EXHALE AND HOLD'} time={promptDuration} /> }
+        { isInRecovery && <Prompt text={'INHALE DEEPLY AND HOLD'} time={promptDuration} /> }
       </div>
       <div className='state'>{`${JSON.stringify(mainState)}`}</div>
       <div className='bubble'>
