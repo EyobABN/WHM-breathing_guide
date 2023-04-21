@@ -19,7 +19,7 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState, setShowReport
   const controls = useAnimation();
   const breathLength = mainState.pace;
   const recoveryLength = 15;
-  const promptDuration = 10000;
+  const promptDuration = 5000;
 
   const handleStart = () => {
     if (isStart) setIsStart(false);
@@ -72,17 +72,17 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState, setShowReport
 
   return (
     <main className='main'>
-      <FaArrowLeft className='back-button' onClick={() => { setShowForm(true); setShowMain(false);}} />
+      <FaArrowLeft className='button' id='back-button' onClick={() => { setShowForm(true); setShowMain(false);}} />
       <div className='prompt'>
-        { isStart && <Prompt text={'PRESS PLAY TO START'} /> }
-        { isBreathing && <Prompt text={`TAKE ${mainState.breaths} DEEP BREATHS`} time={promptDuration} /> }
+        { isStart && <Prompt text={`PRESS PLAY TO BEGIN${mainState.round ? ` ROUND ${mainState.round + 1}` : ''}`} /> }
+        { isBreathing && <Prompt text={`TAKE ${mainState.breaths} DEEP BREATHS`} time={promptDuration * 2} /> }
         { isInRetention && <Prompt text={'EXHALE AND HOLD'} time={promptDuration} /> }
         { isInRecovery && <Prompt text={'INHALE DEEPLY AND HOLD'} time={promptDuration} /> }
       </div>
-      <div className='state'>{`${JSON.stringify(mainState)}`}</div>
+      <div id='state'><Prompt text={!isStart ? `ROUND ${mainState.round}` : ''} /></div>
       <div className='bubble'>
+        { isStart && <FaPlay type='button' id='play-button' onClick={handleStart} /> }
         <motion.div className='circle' animate={controls}></motion.div>
-        { isStart && <FaPlay type='button' className='play-button' title='Start session' onClick={handleStart} /> }
         { isBreathing && <BreathCounter setIsBreathing={setIsBreathing} setIsInRetention={setIsInRetention} maxCount={mainState.breaths} delay={breathLength * 1000}/> }
         { isInRetention && <Countup seconds={retentionSeconds} setSeconds={setRetentionSeconds} /> }
         { isInRecovery && <Countdown seconds={recoveryLength} controls={controls} completeRound={handleTransition} mainState={mainState} />}

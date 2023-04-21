@@ -1,4 +1,5 @@
 import React from "react";
+import Table from "./Table/Table";
 
 
 const Report = ({ setShowReport, setShowWelcome, mainState }) => {
@@ -9,13 +10,15 @@ const Report = ({ setShowReport, setShowWelcome, mainState }) => {
 
   return (
     <div className="report">
-      <div className="title">WELL DONE</div>
-      <div className="subTitle">Relax, and let your breathing return to normal. Here are your results</div>
-      <div className="state">{`${JSON.stringify(mainState)}`}</div>
-      <button
-        className="button"
-        onClick={handleClick}
-      >RETURN TO HOMEPAGE</button>
+      { mainState.retentionTimes.length > 0 ?
+          <>
+            <div className="title">WELL DONE</div>
+            <div className="subTitle">Relax, and let your breathing return to normal.<br/>Here are your results</div>
+            <Table times={mainState.retentionTimes} />
+          </> :
+          <div className="subTitle">No rounds completed.<br/>Return to the homepage to start a new session.</div> 
+      }
+      <button className="button" onClick={handleClick}>RETURN TO HOMEPAGE</button>
     </div>
   );
 };

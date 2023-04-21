@@ -14,9 +14,10 @@
 .button {
   cursor: pointer;
   display: inline-block;
+  margin: 10px;
   border: none;
   border-radius: 5px;
-  background-color: rgb(215, 215, 255);
+  background-color: rgb(235, 235, 250);
   color: lightslategray;
   font-weight: 600;
   font-size: 16px;
@@ -30,6 +31,10 @@
   background-color: orange;
 }
 
+.button:active {
+  transform: scale(0.97);
+}
+
 .title {
   display: block;
   color: darkslategray;
@@ -41,8 +46,8 @@
 
 .subTitle {
   display: block;
+  text-align: center;
   color: darkslategray;
   font-size: 18px;
   line-height: 26px;
-
 }

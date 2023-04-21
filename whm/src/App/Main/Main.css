@@ -1,16 +1,15 @@
-.back-button {
-  cursor: pointer;
+#back-button {
   position: absolute;
+  background-color: transparent;
   left: 5%;
   top: 10%;
-  color: lightslategray;
   width: 30px;
   height: 30px;
   padding: 5px;
   margin: 0;
 }
 
-.back-button:hover {
+#back-button:hover {
   color: white;
   background-color: orange;
   border-radius: 15px;
@@ -19,7 +18,6 @@
 #finish-button {
   position: absolute;
   background-color: transparent;
-  color: lightslategray;
   right: 5%;
   top: 10%;
   padding: 0px;
@@ -32,24 +30,27 @@
   background-color: orange;
 }
 
-.state {
+#state {
   position: absolute;
-  color: lightslategray;
   top: 15%;
+
+  color: lightslategray;
+  font-size: 16px;
 }
 
 .prompt {
   position: absolute;
   top: 25%;
-
+  
   font-size: 20px;
   color: lightslategray;
   font-weight: 400;
+  text-align: center;
 }
 
 .bubble {
   position: relative;
-  cursor: pointer;
+  background-color: transparent;
 }
 
 .circle {
@@ -57,19 +58,32 @@
   width: 200px;
   border-radius: 50%;
   border: 5px solid orange;
+  z-index: -1;
 }
 
-.play-button, .counter, .timer {
+#play-button, .counter, .timer {
   position: absolute;
   top: 50%;
   left: 50%;
   color: orange;
 }
 
-.play-button {
-  width: 72px;
-  height: 72px;
+#play-button {
+  cursor: pointer;
+  background-color: transparent;
+  width: 65px;
+  height: 65px;
   transform: translate(-40%, -50%);
+  z-index: 1;
+}
+
+#play-button:hover {
+  color: rgb(255, 175, 0);
+}
+
+
+#play-button:active {
+  transform: translate(-40%, -50%) scale(0.98);
 }
 
 .counter {
