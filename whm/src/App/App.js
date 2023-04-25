@@ -11,12 +11,12 @@ function App() {
   const [showMain, setShowMain] = useState(false);
   const [showReport, setShowReport] = useState(false);
 
-  const [mainState, setMainState] = useState({});
+  const [mainState, setMainState] = useState({ 'pace': 3, 'breaths': 30, 'round': 0, retentionTimes: [] });
 
   return (
     <>
       {showWelcome && <Welcome setShowWelcome={setShowWelcome} setShowForm={setShowForm} />}
-      {showForm && <Form setShowForm={setShowForm} setShowMain={setShowMain} setMainState={setMainState} />}
+      {showForm && <Form setShowForm={setShowForm} setShowMain={setShowMain} mainState={mainState} setMainState={setMainState} />}
       {showMain && <Main setShowForm={setShowForm} setShowMain={setShowMain} mainState={mainState} setMainState={setMainState} setShowReport={setShowReport} />}
       {showReport && <Report setShowReport={setShowReport} setShowWelcome={setShowWelcome} mainState={mainState} />}
     </>
