@@ -2,9 +2,10 @@ import React from "react";
 import Table from "./Table/Table";
 
 
-const Report = ({ setShowReport, setShowWelcome, mainState }) => {
+const Report = ({ setShowReport, setShowWelcome, mainState, setMainState }) => {
   const handleClick = () => {
-    setShowWelcome(true)
+    setMainState({...mainState, 'round': 0, retentionTimes: []});
+    setShowWelcome(true);
     setShowReport(false);
   };
 

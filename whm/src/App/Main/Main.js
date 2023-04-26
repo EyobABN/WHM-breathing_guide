@@ -4,7 +4,7 @@ import Prompt from './Prompt/Prompt';
 import BreathCounter from './BreathCounter/BreathCounter';
 import Countup from './Timers/Countup';
 import Countdown from './Timers/Countdown';
-import { FaPlay, FaArrowLeft } from 'react-icons/fa';
+import { FaPlay, FaAngleLeft } from 'react-icons/fa';
 import './Main.css';
 
 
@@ -72,7 +72,7 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState, setShowReport
 
   return (
     <main className='main'>
-      <FaArrowLeft className='button' id='back-button' onClick={() => { setShowForm(true); setShowMain(false);}} />
+      <FaAngleLeft className='button' id='back-button' onClick={() => { setShowForm(true); setShowMain(false);}} />
       <div className='prompt'>
         { isStart && <Prompt text={`PRESS PLAY TO BEGIN${mainState.round ? ` ROUND ${mainState.round + 1}` : ''}`} /> }
         { isBreathing && <Prompt text={`TAKE ${mainState.breaths} DEEP BREATHS`} time={promptDuration * 2} /> }

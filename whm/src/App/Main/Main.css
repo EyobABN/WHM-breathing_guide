@@ -1,34 +1,25 @@
+@import '../../customProperties.css';
+
 #back-button {
+  color: var(--secondary-text-color);
   position: absolute;
   background-color: transparent;
+  border-radius: 15px;
   left: 5%;
-  top: 10%;
+  top: 20px;
   width: 30px;
   height: 30px;
-  padding: 5px;
+  padding: 2px 2px 2px 0px;
   margin: 0;
-}
-
-#back-button:hover {
-  color: white;
-  background-color: orange;
-  border-radius: 15px;
 }
 
 #finish-button {
   position: absolute;
-  background-color: transparent;
   right: 5%;
-  top: 10%;
-  padding: 0px;
+  top: 20px;
   height: 30px;
   padding: 5px 10px;
   margin: 0;
-}
-
-#finish-button:hover {
-  color: white;
-  background-color: orange;
 }
 
 #state {
@@ -37,7 +28,7 @@
   top: 10%;
   padding: 8px 0;
 
-  color: lightslategray;
+  color: var(--secondary-text-color);
   font-size: 16px;
   line-height: 16px;
 }
@@ -47,7 +38,7 @@
   top: 20%;
   
   font-size: 20px;
-  color: lightslategray;
+  color: var(--secondary-text-color);
   font-weight: 400;
   text-align: center;
 }
@@ -61,7 +52,7 @@
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  border: 5px solid orange;
+  border: 5px solid var(--primary-graphics-color);
   z-index: -1;
 }
 
@@ -69,7 +60,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  color: orange;
+  color: var(--primary-graphics-color);
 }
 
 #play-button {
@@ -80,11 +71,6 @@
   transform: translate(-40%, -50%);
   z-index: 1;
 }
-
-#play-button:hover {
-  color: rgb(255, 175, 0);
-}
-
 
 #play-button:active {
   transform: translate(-40%, -50%) scale(0.98);

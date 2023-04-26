@@ -18,7 +18,7 @@ function App() {
       {showWelcome && <Welcome setShowWelcome={setShowWelcome} setShowForm={setShowForm} />}
       {showForm && <Form setShowForm={setShowForm} setShowMain={setShowMain} mainState={mainState} setMainState={setMainState} />}
       {showMain && <Main setShowForm={setShowForm} setShowMain={setShowMain} mainState={mainState} setMainState={setMainState} setShowReport={setShowReport} />}
-      {showReport && <Report setShowReport={setShowReport} setShowWelcome={setShowWelcome} mainState={mainState} />}
+      {showReport && <Report setShowReport={setShowReport} setShowWelcome={setShowWelcome} mainState={mainState} setMainState={setMainState} />}
     </>
   );
 }

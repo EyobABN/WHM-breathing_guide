@@ -1,0 +1,12 @@
+:root {
+  --primary-bg-color: ghostwhite;
+  --primary-text-color: darkslategray;
+  --secondary-text-color: lightslategray;
+  --primary-graphics-color: orange;
+
+  /* Buttons */
+  --button-txt-color: rgb(100, 115, 135);
+  --button-bg-color: rgb(240, 240, 255);
+  --button-txt-color-active: rgb(110, 125, 145);
+  --button-bg-color-active: rgb(235, 235, 250);
+}

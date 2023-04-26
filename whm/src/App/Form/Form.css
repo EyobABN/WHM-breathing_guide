@@ -1,3 +1,5 @@
+@import '../../customProperties.css';
+
 .form-elements {
   width: auto;
   height: auto;
@@ -7,9 +9,9 @@
   justify-content: center;
   flex-direction: column;
 
-  background-color: ghostwhite;
-  border: 1px solid rgb(235, 235, 235);
-  border-radius: 5px;
+  background-color: var(--primary-bg-color);
+  border-color: transparent;
+  border-radius: 0;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 
   padding: 15px 30px;
@@ -18,15 +20,15 @@
 
 .form-element {
   margin: 5px;
-  color: darkslategray;
+  color: var(--primary-text-color);
 }
 
 select {
   padding: 1px 3px;
   margin-left: 5px;
-  background-color: rgb(235, 235, 255);
-  border-color: rgb(235, 235, 255);
-  border-radius: 3px;
+  background-color: var(--button-bg-color);
+  border-color: transparent;
+  border-radius: 5px;
   height: 30px;
-  color: darkslategray;
+  color: var(--primary-text-color);
 }
