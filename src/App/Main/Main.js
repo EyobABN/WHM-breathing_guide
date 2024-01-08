@@ -70,9 +70,15 @@ const Main = ({ setShowForm, setShowMain, mainState, setMainState, setShowReport
     setShowMain(false);
   }
 
+  const handleBackClick = () => {
+    setShowForm(true);
+    setShowMain(false); 
+    setMainState({...mainState, 'round': 0, 'retentionTimes': []}) // reset
+  }
+
   return (
     <main className='main'>
-      <FaAngleLeft className='button' id='back-button' onClick={() => { setShowForm(true); setShowMain(false);}} />
+      <FaAngleLeft className='button' id='back-button' onClick={handleBackClick} />
       <div className='prompt'>
         { isStart && <Prompt text={`PRESS PLAY TO BEGIN${mainState.round ? ` ROUND ${mainState.round + 1}` : ''}`} /> }
         { isBreathing && <Prompt text={`TAKE ${mainState.breaths} DEEP BREATHS`} time={promptDuration * 2} /> }
