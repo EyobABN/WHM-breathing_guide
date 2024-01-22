@@ -1,0 +1,17 @@
+.footer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: var(--secondary-text-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  border-bottom: 1px solid var(--secondary-text-color);
+}
+
+a:hover {
+  color: var(--primary-text-color);
+  border-bottom: 1px solid var(--primary-text-color);
+}
