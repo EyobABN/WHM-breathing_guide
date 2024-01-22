@@ -15,7 +15,9 @@ const Welcome = ({ setShowWelcome, setShowForm}) => {
       <button
         className="button"
         onClick={handleClick}
+        type="button"
       >EXERCISE</button>
+      <a href="https://www.youtube.com/watch?v=OpTG02x6w5o" rel="noreferrer" target="_blank">What is Wim Hof?</a>
     </div>
   );
 };

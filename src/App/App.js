@@ -4,6 +4,7 @@ import Form from './Form/Form';
 import Main from './Main/Main';
 import Report from './Report/Report';
 import './App.css';
+import Footer from './Footer/Footer';
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -19,6 +20,7 @@ function App() {
       {showForm && <Form setShowForm={setShowForm} setShowMain={setShowMain} mainState={mainState} setMainState={setMainState} />}
       {showMain && <Main setShowForm={setShowForm} setShowMain={setShowMain} mainState={mainState} setMainState={setMainState} setShowReport={setShowReport} />}
       {showReport && <Report setShowReport={setShowReport} setShowWelcome={setShowWelcome} mainState={mainState} setMainState={setMainState} />}
+      <Footer />
     </>
   );
 }
